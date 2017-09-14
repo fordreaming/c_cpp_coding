@@ -2,7 +2,7 @@
 using namespace std;
 
 //判断indexBitOf1的位置是否为1
-bool (int num, int indexBitOf1)
+bool IndexBitIs1(int num, int indexBitOf1)
 {
   num = num >>indexBitOf1;
   return (num&1);
@@ -12,7 +12,7 @@ bool (int num, int indexBitOf1)
 int findIndexBitOf1(int num)
 {
   int index = 0;
-  while((num^1==1)&&(index<32))
+  while(((num&1)==0)&&(index<32))
   {
     num = num>>1;
     index++;  
@@ -37,10 +37,10 @@ void FindAppearOnce(int data[], int length, int &num1, int &num2)
   for(int j=0;j<length;j++)
   {
     //判断indexBitOf1的位置是否为1
-    if(IndexBitIs1(data[j],indexBitOf1)
-      num1 = num1^data[j];
+    if(IndexBitIs1(data[j],indexBitOf1))
+      num1 ^= data[j];
     else 
-      num2 = num2^data[j];  
+      num2 ^= data[j];  
   }  
 }
 
@@ -50,4 +50,5 @@ int main()
   int testArr[6]={4,3,2,2,1,3};
   FindAppearOnce(testArr,6,num1,num2);
   cout <<num1 <<num2<<endl;
+  return 0;
 }
