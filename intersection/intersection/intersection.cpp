@@ -184,7 +184,7 @@ bool getintersection(vector<Point> &poly1, vector<Point> &poly2, std::vector<Poi
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Mat src = imread("./color2.JPG",CV_LOAD_IMAGE_COLOR);
+	Mat src = imread("./color2.JPG", CV_LOAD_IMAGE_COLOR);
 	Mat Retsrc = imread("./color2.JPG", CV_LOAD_IMAGE_GRAYSCALE);
 
 	Mat planes[] = { Mat::zeros(src.size(), CV_8UC1), Mat::zeros(src.size(), CV_8UC1), Mat::zeros(src.size(), CV_8UC1)};
