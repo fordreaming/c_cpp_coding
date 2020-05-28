@@ -1,8 +1,18 @@
-#include <QCoreApplication>
+#include <iostream>
+#include <deque>
+#include <QDebug>
 
-int main(int argc, char *argv[])
+#include <boost/geometry.hpp>
+#include <boost/geometry/geometries/point_xy.hpp>
+#include <boost/geometry/geometries/polygon.hpp>
+#include <boost/foreach.hpp>
+#include "demotest.hpp"
+
+
+int main()
 {
-    QCoreApplication a(argc, argv);
-
-    return a.exec();
+//    demoTest1();
+//    demoTest2();
+    demoTest3();
+    return 0;
 }
