@@ -1,8 +1,26 @@
+#include <iostream>
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
 #include <boost/foreach.hpp>
+#include <chrono>
+#include <time.h>
 
+
+using namespace std;
+
+int64_t CurrentTimeMillis()
+{
+    int64_t timems = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    return timems;
+}
+
+unsigned long GetTickCount()
+{
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return (ts.tv_sec * 1000 + ts.tv_nsec / 1000000000);
+}
 
 void demoTest1(){
     typedef boost::geometry::model::polygon<boost::geometry::model::d2::point_xy<double> > polygon;
@@ -17,14 +35,17 @@ void demoTest1(){
         "POLYGON((4.0 -0.5 , 3.5 1.0 , 2.0 1.5 , 3.5 2.0 , 4.0 3.5 , 4.5 2.0 , 6.0 1.5 , 4.5 1.0 , 4.0 -0.5))", blue);
 
     std::deque<polygon> output;
+    int64_t startTime = CurrentTimeMillis();
     boost::geometry::intersection(green, blue, output);
 
     int i = 0;
-    std::cout << "green && blue:" << std::endl;
+//    std::cout << "green && blue:" << std::endl;
     BOOST_FOREACH(polygon const& p, output)
     {
         std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
     }
+    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
+    //2.50205
 }
 
 void demoTest2(){
@@ -39,6 +60,7 @@ void demoTest2(){
         "POLYGON((2 1, 2 2 , 6 2 , 6 1 , 2 1))", blue);
 
     std::deque<polygon> output;
+    int64_t startTime = CurrentTimeMillis();
     boost::geometry::intersection(green, blue, output);
 
     int i = 0;
@@ -47,6 +69,7 @@ void demoTest2(){
     {
         std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
     }
+    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
 }
 
 
@@ -62,6 +85,7 @@ void demoTest3(){
         "POLYGON((99.575 192.904, 132.0619 192.904 , 132.0619 382.6, 99.575, 382.6, 99.575 192.904))", blue);
 
     std::deque<polygon> output;
+    int64_t startTime = CurrentTimeMillis();
     boost::geometry::intersection(green, blue, output);
 
     int i = 0;
@@ -70,4 +94,29 @@ void demoTest3(){
     {
         std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
     }
+    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
+}
+
+void demoTest4(){
+    typedef boost::geometry::model::polygon<boost::geometry::model::d2::point_xy<double> > polygon;
+
+    polygon green, blue;
+
+    boost::geometry::read_wkt(
+        "POLYGON((0 4,4 4 ,4 0,0 0, 0, 4))", green);
+
+    boost::geometry::read_wkt(
+        "POLYGON((2 1, 2 2 , 6 2 , 5 1.5, 6 1.5, 6 1 , 2 1))", blue);
+
+    std::deque<polygon> output;
+    int64_t startTime = CurrentTimeMillis();
+    boost::geometry::intersection(green, blue, output);
+
+    int i = 0;
+    std::cout << "green && blue:" << std::endl;
+    BOOST_FOREACH(polygon const& p, output)
+    {
+        std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
+    }
+    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
 }

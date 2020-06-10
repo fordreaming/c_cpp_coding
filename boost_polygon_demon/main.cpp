@@ -11,8 +11,13 @@
 
 int main()
 {
-//    demoTest1();
-//    demoTest2();
+    //2.50205
+    demoTest1();
+    // 2
+    demoTest2();
+    //
     demoTest3();
+    //area: 2
+    demoTest4();
     return 0;
 }
