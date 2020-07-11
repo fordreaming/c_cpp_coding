@@ -184,14 +184,14 @@ bool getintersection(vector<Point> &poly1, vector<Point> &poly2, std::vector<Poi
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Mat src = imread("./color2.JPG", CV_LOAD_IMAGE_COLOR);
-	Mat Retsrc = imread("./color2.JPG", CV_LOAD_IMAGE_GRAYSCALE);
+	Mat src = imread("./test.JPG", CV_LOAD_IMAGE_COLOR);
+	Mat Retsrc = imread("./test.JPG", CV_LOAD_IMAGE_GRAYSCALE);
 
 	Mat planes[] = { Mat::zeros(src.size(), CV_8UC1), Mat::zeros(src.size(), CV_8UC1), Mat::zeros(src.size(), CV_8UC1)};
 	split(src, planes);
 
 	for (int i = 0; i < planes[1].rows; i++)
-	{
+	{									 
 		for (int j = 0; j < planes[1].cols; j++)
 		{
 			if (planes[1].at<uchar>(i, j) >= 100)
@@ -221,7 +221,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	waitKey(0);
 
 	threshold(red, red, 100, 255, THRESH_BINARY);
-	morphologyEx(red, red, MORPH_OPEN, getStructuringElement(MORPH_RECT, Size(15, 15)));
+	morphologyEx(red, red, MORPH_OPEN, getStructuringElement(MORPH_RECT, Size(25, 25)));
 	red = 255 - red;
 	imshow("red", red); //R
 	waitKey(0);

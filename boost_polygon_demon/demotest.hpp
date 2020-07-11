@@ -1,24 +1,26 @@
 #include <iostream>
+#include <deque>
+
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
+
 #include <boost/foreach.hpp>
-#include <chrono>
-#include <time.h>
 
 
 using namespace std;
 
 int64_t CurrentTimeMillis()
 {
-    int64_t timems = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    return timems;
+//    int64_t timems = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+//    return timems;
+    return 0;
 }
 
 unsigned long GetTickCount()
 {
     struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
+//    clock_gettime(CLOCK_MONOTONIC, &ts);
     return (ts.tv_sec * 1000 + ts.tv_nsec / 1000000000);
 }
 
@@ -27,15 +29,69 @@ void demoTest1(){
 
     polygon green, blue;
 
-    boost::geometry::read_wkt(
-        "POLYGON((2.4 1.7,2.8 1.8,3.4 1.2,3.7 1.6,3.4 2,4.1 3,5.3 2.6,5.4 1.2,4.9 0.8,2.9 0.7,2 1.3,2.4 1.7)"
-            "(4.0 2.0, 4.2 1.4, 4.8 1.9, 4.4 2.2, 4.0 2.0))", green);
+//    case 1
+//    std::string shape1 = "POLYGON((49 133,66 136,56 154,36 146,48 133,49 133))";
+//    boost::geometry::read_wkt(shape1, green);
 
-    boost::geometry::read_wkt(
-        "POLYGON((4.0 -0.5 , 3.5 1.0 , 2.0 1.5 , 3.5 2.0 , 4.0 3.5 , 4.5 2.0 , 6.0 1.5 , 4.5 1.0 , 4.0 -0.5))", blue);
+//    std::string shape2 = "POLYGON((49 133,66 136,56 154,36 146,48 133,49 133))";
+//    boost::geometry::read_wkt(shape2, blue);
+
+    //case 2
+//    std::string shape1 = "POLYGON((0 4, 4 4, 4 0, 0 0, 0 4))";
+//    boost::geometry::read_wkt(shape1, green);
+
+//    std::string shape2 = "POLYGON((0 4, 4 4, 4 0, 0 0, 0 4))";
+//    boost::geometry::read_wkt(shape2, blue);
+
+
+//    boost::geometry::read_wkt(
+//        "POLYGON((0 0, 0 4, 4 4, 4 0, 0 0))", green);
+
+//    boost::geometry::read_wkt(
+//        "POLYGON((2 2, 2 0, 4 0, 2 2))", blue);
+
+//        boost::geometry::read_wkt(
+//            "POLYGON((491 1660,349 1756,498 1971,547 1717,491 1660))", green);
+
+//        boost::geometry::read_wkt(
+//            "POLYGON((491 1660,349 1756,498 1971,547 1717,491 1660))", blue);
+
+//        std::string shape1 = "POLYGON((586 1349,883 1448,469 1710,431 1424,586 1349))";
+//        boost::geometry::read_wkt(shape1, green);
+
+//        std::string shape2 = "POLYGON((586 1349,883 1448,469 1710,431 1424,586 1349))";
+//        boost::geometry::read_wkt(shape2, blue);
+
+
+//    std::string shape1 = "POLYGON((586 1349,883 1448,469 1710,431 1424,586 1349))";
+//    std::string shape1 = "POLYGON((586 1349,431 1424,469 1710,883 1448,586 1349))";
+//    boost::geometry::read_wkt(shape1, green);
+
+//    std::string shape2 = "POLYGON((586 1349,431 1424,469 1710,883 1448,586 1349))";
+//    boost::geometry::read_wkt(shape2, blue);
+
+
+//    std::string shape1 = "POLYGON((462 2533,455 2703,650 2745,685 2544,462 2533))";
+//    boost::geometry::read_wkt(shape1, green);
+
+//    std::string shape2 = "POLYGON((462 2533,455 2703,650 2745,685 2544,462 2533))";
+//    boost::geometry::read_wkt(shape2, blue);
+
+
+//    std::string shape1 = "POLYGON((1519 2498,1272 2692,1660 2689,1519 2498))";
+//    boost::geometry::read_wkt(shape1, green);
+
+//    std::string shape2 = "POLYGON((1519 2498,1272 2692,1660 2689,1519 2498))";
+//    boost::geometry::read_wkt(shape2, blue);
+
+    std::string shape1 = "POLYGON((1399 1402,501 1413,1399 1402))";
+    boost::geometry::read_wkt(shape1, green);
+
+    std::string shape2 = "POLYGON((1399 1402,501 1413,1399 1402))";
+    boost::geometry::read_wkt(shape2, blue);
 
     std::deque<polygon> output;
-    int64_t startTime = CurrentTimeMillis();
+//    int64_t startTime = CurrentTimeMillis();
     boost::geometry::intersection(green, blue, output);
 
     int i = 0;
@@ -44,7 +100,7 @@ void demoTest1(){
     {
         std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
     }
-    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
+//    std::cout << "time is: " <<CurrentTimeMillis() - startTime << " ms" << std::endl;
     //2.50205
 }
 
@@ -54,7 +110,7 @@ void demoTest2(){
     polygon green, blue;
 
     boost::geometry::read_wkt(
-        "POLYGON((0 4,4 4 ,4 0,0 0, 0, 4))", green);
+        "POLYGON((0 4, 4 4, 4 0, 0 0, 0, 4))", green);
 
     boost::geometry::read_wkt(
         "POLYGON((2 1, 2 2 , 6 2 , 6 1 , 2 1))", blue);
@@ -103,7 +159,7 @@ void demoTest4(){
     polygon green, blue;
 
     boost::geometry::read_wkt(
-        "POLYGON((0 4,4 4 ,4 0,0 0, 0, 4))", green);
+        "POLYGON((0 4,4 4 ,4 0,0 0, 0 4))", green);
 
     boost::geometry::read_wkt(
         "POLYGON((2 1, 2 2 , 6 2 , 5 1.5, 6 1.5, 6 1 , 2 1))", blue);
