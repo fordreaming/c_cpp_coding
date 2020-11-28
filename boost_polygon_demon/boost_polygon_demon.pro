@@ -18,3 +18,6 @@ SOURCES += main.cpp
 
 HEADERS += \
     demotest.hpp
+
+win32:INCLUDEPATH += D:/ProgramFiles/boost/boost_1_69_0/
+win32:LIBS        += D:/ProgramFiles/boost/boost_1_69_0/lib64-msvc-14.0/boost_*.lib
