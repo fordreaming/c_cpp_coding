@@ -24,22 +24,30 @@ int main(int argc, char *argv[])
         InheritanceA inheritanceA;
         InheritanceB inheritanceB;
 
-//        std::thread tA(&InheritanceA::SendSignal, InheritanceA(), flag, std::ref(mutex),
-//                       std::ref(conditionVariable));
-//        std::thread tB(&InheritanceB::ReceiveSignal, InheritanceB(), flag, std::ref(mutex),
-//                       std::ref(conditionVariable));
+        // two ways to create thread used member function
+        std::thread tA(&InheritanceA::SendSignal,
+                       &inheritanceA,
+                       std::ref(flag),
+                       std::ref(mutex),
+                       std::ref(conditionVariable));
 
-        std::thread tA = std::thread(&InheritanceA::SendSignal,
-                                     &inheritanceA,
-                                     std::ref(flag),
-                                     std::ref(mutex),
-                                     std::ref(conditionVariable));
+        std::thread tB(&InheritanceB::ReceiveSignal,
+                       &inheritanceB,
+                       std::ref(flag),
+                       std::ref(mutex),
+                       std::ref(conditionVariable));
 
-        std::thread tB = std::thread(&InheritanceB::ReceiveSignal,
-                                     &inheritanceB,
-                                     std::ref(flag),
-                                     std::ref(mutex),
-                                     std::ref(conditionVariable));
+//        std::thread tA = std::thread(&InheritanceA::SendSignal,
+//                                     &inheritanceA,
+//                                     std::ref(flag),
+//                                     std::ref(mutex),
+//                                     std::ref(conditionVariable));
+
+//        std::thread tB = std::thread(&InheritanceB::ReceiveSignal,
+//                                     &inheritanceB,
+//                                     std::ref(flag),
+//                                     std::ref(mutex),
+//                                     std::ref(conditionVariable));
 
 //        inheritanceA.m_dataVec[0] = 1;
 //        inheritanceA.m_dataVec[1] = 2;
