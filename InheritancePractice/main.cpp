@@ -29,10 +29,17 @@ int main(int argc, char *argv[])
 //        std::thread tB(&InheritanceB::ReceiveSignal, InheritanceB(), flag, std::ref(mutex),
 //                       std::ref(conditionVariable));
 
-        std::thread tA = std::thread(&InheritanceA::SendSignal, &inheritanceA, std::ref(flag),
-                                     std::ref(mutex), std::ref(conditionVariable));
-        std::thread tB = std::thread(&InheritanceB::ReceiveSignal, &inheritanceB, std::ref(flag),
-                       std::ref(mutex), std::ref(conditionVariable));
+        std::thread tA = std::thread(&InheritanceA::SendSignal,
+                                     &inheritanceA,
+                                     std::ref(flag),
+                                     std::ref(mutex),
+                                     std::ref(conditionVariable));
+
+        std::thread tB = std::thread(&InheritanceB::ReceiveSignal,
+                                     &inheritanceB,
+                                     std::ref(flag),
+                                     std::ref(mutex),
+                                     std::ref(conditionVariable));
 
 //        inheritanceA.m_dataVec[0] = 1;
 //        inheritanceA.m_dataVec[1] = 2;
@@ -44,7 +51,7 @@ int main(int argc, char *argv[])
 //            cout << item;
 //        }
         tA.join();
-//        tB.join();
+        tB.join();
     }
 
 //    class CFoo {
