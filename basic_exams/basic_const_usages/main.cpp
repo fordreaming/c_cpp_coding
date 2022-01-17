@@ -4,6 +4,7 @@ using namespace std;
 
 int main() {
 //    const int i, j = 0;
-    test();
+    File2 file2;
+    file2.ConstActionScope();
     return 0;
 }

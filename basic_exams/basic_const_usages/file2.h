@@ -3,13 +3,11 @@
 #include <iostream>
 using namespace std;
 
-extern const int counter;
-
-
 class File2
 {
 public:
     File2();
+    void ConstActionScope();
 };
 
 #endif // FILE2_H
