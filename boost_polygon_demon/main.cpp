@@ -12,12 +12,19 @@
 int main()
 {
     //2.50205
-    demoTest1();
+//    demoTest1();
     // 2
-    demoTest2();
+//    demoTest2();
     //
-    demoTest3();
+//    demoTest3();
     //area: 2
-    demoTest4();
+//    demoTest4();
+
+    //
+//    demoTest5();
+
+    //
+//    demoTest6();
+    demoTest7();
     return 0;
 }
