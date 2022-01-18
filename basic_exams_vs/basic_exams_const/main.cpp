@@ -1,7 +1,5 @@
-// basic_exams_vs.cpp : 定义控制台应用程序的入口点。
-//
-
-#include "stdafx.h"
+#include <iostream>
+using namespace std;
 
 char* GetMemory(void) {
 	char* p = "hello world";
@@ -16,6 +14,21 @@ void f(const int& i) {
 
 }
 
+class base {
+
+public:
+	void func1() {
+		this->nums = 1;
+	}
+
+	void func2() const {
+
+	}
+
+private:
+	int nums;
+};
+
 int main()
 {
 	const double *cptr;   // cptr pointe to const double object;
@@ -27,7 +40,7 @@ int main()
 
 	double d = 1.0;
 	double * const cptr_const = &d;   // cptr pointer is const
-	//cptr_const = &d;   // error
+									  //cptr_const = &d;   // error
 	*cptr_const = 2.0;
 
 	double d1 = 1;
@@ -44,14 +57,24 @@ int main()
 	char *p = "hello world";
 	char p_arr[] = "hello world";
 
-//	char* str = GetMemory();
-//	str[0] = 'a';
+	//	char* str = GetMemory();
+	//	str[0] = 'a';
 
 	const int a = 1;
 	fun(&a);
 
 	f(1);
 	int* data_p = new int[1];
-    return 0;
+
+	int i = 0;
+	if (!!i) {
+		std::cout << "enter: " << std::endl;
+	}
+
+	base base_obj;
+	base base_obj2;
+	base_obj.func1();
+
+	return 0;
 }
 
