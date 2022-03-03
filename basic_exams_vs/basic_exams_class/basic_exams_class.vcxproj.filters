@@ -18,12 +18,42 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ConstTest.cpp">
+    <ClCompile Include="OverLoadTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OverRide.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OverRideChild.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OverSee.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OverSeeChild.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="base1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConstTest.h">
+    <ClInclude Include="OverLoadTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OverRide.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OverRideChild.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OverSee.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OverSeeChild.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base1.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

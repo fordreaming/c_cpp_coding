@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FA8209B1-66FD-4133-BA55-270E03D10265}</ProjectGuid>
+    <ProjectGuid>{46AE043F-5F56-41BB-8797-5C4CE5B7F7AC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>basic_exams_const</RootNamespace>
+    <RootNamespace>basic_exams_class</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,11 +142,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConstTest.cpp" />
+    <ClCompile Include="base1.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OverLoadTest.cpp" />
+    <ClCompile Include="OverRide.cpp" />
+    <ClCompile Include="OverRideChild.cpp" />
+    <ClCompile Include="OverSee.cpp" />
+    <ClCompile Include="OverSeeChild.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConstTest.h" />
+    <ClInclude Include="base1.h" />
+    <ClInclude Include="OverLoadTest.h" />
+    <ClInclude Include="OverRide.h" />
+    <ClInclude Include="OverRideChild.h" />
+    <ClInclude Include="OverSee.h" />
+    <ClInclude Include="OverSeeChild.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
