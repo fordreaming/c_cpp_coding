@@ -40,7 +40,7 @@ private:
 
 void test_mem() {
 	char *p = new char[64];
-	delete p;
+	delete []p;
 	p = NULL;
 	return;
 }
@@ -120,7 +120,7 @@ int main()
 	const string *pcs = new const string;
 
 	char test[] = "hello world";
-	int size = strlen(test);
+	size_t size = strlen(test);
 	int size1 = sizeof(test);
 
 	ConstFunRetVal const_ret_val;
