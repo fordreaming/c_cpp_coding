@@ -50,8 +50,8 @@ public:
 class member2
 {
 public:
-	member2();
-	~member2();
+	member2() {};
+	~member2() {};
 
 	void printthism2() {
 		std::cout << "member2 this: " << this << std::endl;
@@ -62,10 +62,8 @@ public:
 };
 
 
-class mi : public base1, public base2 {
-	member1 m1;
-	member2 m2;
 
+class mi : public base1, public base2 {
 public:
 	void printthis() {
 		std::cout << "m1 this: " << this << std::endl;
@@ -74,4 +72,31 @@ public:
 		m1.printthism1();
 		m2.printthism2();
 	}
+
+public:
+	member1 m1;
+	member2 m2;
+	
+};
+
+
+class MyClass
+{
+public:
+	MyClass(){}
+	~MyClass(){};
+
+private:
+
+};
+
+class MyClass2 : public MyClass
+{
+public:
+	MyClass2(){}
+	~MyClass2(){}
+
+
+private:
+
 };

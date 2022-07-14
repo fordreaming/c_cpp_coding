@@ -13,5 +13,9 @@ public:
 	void fun1(int, int){
 		std::cout << "override child" << std::endl;
 	}
+
+	virtual void fun2(MyClass2& my) {
+		std::cout << "override child" << std::endl;
+	}
 };
 
