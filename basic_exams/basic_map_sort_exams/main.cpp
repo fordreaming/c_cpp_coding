@@ -4,6 +4,8 @@
 #include <algorithm>
 using namespace std;
 
+#include "base_map_exams.h"
+
 struct increaseKey {
     bool operator() (const std::string& str1, const std::string& str2) {
         return str1.length() < str2.length();
@@ -136,6 +138,9 @@ int main(int argc, char *argv[])
 //    process_copy(data);
 
 //    SortByStruct();
+
+    BaseMapExams base_map_exams;
+    base_map_exams.delMapVal();
 
     return 0;
 }
